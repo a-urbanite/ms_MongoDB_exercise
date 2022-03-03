@@ -18,19 +18,27 @@ const addToDb = async (body) => {
     await testAnimal
         .save()
         .then(doc => {
-            // console.log(doc._id.toString());
             id = doc._id.toString()
         })
         .catch(err => console.error(err));
     return id;
 };
 
-const readOneFromDb = () => {
-    
+const readOneFromDb = async (id) => {
+    let searchedAnimal;
+    await Animal
+        .find({_id: mongoose.Types.ObjectId(id)})
+        .then(doc => {
+            searchedAnimal = doc[0];
+        })
+        .catch(err => console.error(err));
+    return searchedAnimal;
 };
 
-const deleteOneFromDb = () => {
-    
+const deleteOneFromDb = async (id) => {
+    await Animal
+        .findOneAndRemove({_id: mongoose.Types.ObjectId(id)})
+        .catch(err => console.error(err));
 };
 
 module.exports.addToDb = addToDb;   

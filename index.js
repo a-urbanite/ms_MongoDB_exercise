@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 const port = 3000
 
 app.post('/', async (req, res) => {
+  // const id = await mongodbManagement.addToDb(req.body);
   const id = await mongoosedbManagement.addToDb(req.body);
   res
     .location(`/${id}`)
@@ -17,14 +18,16 @@ app.post('/', async (req, res) => {
 })
 
 app.get('/:id', async (req, res) => {
-    const result = await mongodbManagement.readOneFromDb(req.params.id);
+    // const result = await mongodbManagement.readOneFromDb(req.params.id);
+    const result = await mongoosedbManagement.readOneFromDb(req.params.id);
     res
       .status(200)
       .json(result)
   })
 
 app.delete('/:id', async (req, res) => {
-  const result = await mongodbManagement.deleteOneFromDb(req.params.id);
+  // const result = await mongodbManagement.deleteOneFromDb(req.params.id);
+  const result = await mongoosedbManagement.deleteOneFromDb(req.params.id);
   res
     .sendStatus(204)
 })
