@@ -1,0 +1,23 @@
+{
+  "name": "ms_MongoDB_exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha . --exit",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.3",
+    "jest": "^27.5.1",
+    "mocha": "^9.2.1",
+    "mongodb": "^4.4.0",
+    "mongoose": "^6.2.4",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  },
+  "dependencies": {}
+}
