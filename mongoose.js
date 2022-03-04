@@ -20,7 +20,7 @@ const addToDb = async (body) => {
         .then(doc => {
             id = doc._id.toString()
         })
-        .catch(err => console.error(err));
+        .catch(err => next(err));
     return id;
 };
 
@@ -31,14 +31,14 @@ const readOneFromDb = async (id) => {
         .then(doc => {
             searchedAnimal = doc[0];
         })
-        .catch(err => console.error(err));
+        .catch(err => next(err));
     return searchedAnimal;
 };
 
 const deleteOneFromDb = async (id) => {
     await Animal
         .findOneAndRemove({_id: mongoose.Types.ObjectId(id)})
-        .catch(err => console.error(err));
+        .catch(err => next(err));
 };
 
 module.exports.addToDb = addToDb;   
